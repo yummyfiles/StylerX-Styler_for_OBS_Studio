@@ -1,0 +1,16 @@
+build/
+StylerX/deps/qt6/
+StylerX/deps/obs-sdk/lib/
+*.user
+*.suo
+.vs/
+__pycache__/
+*.pyc
+*.pyo
+*.exp
+*.ilk
+*.obj
+*.tlog
+*.log
+.DS_Store
+Thumbs.db
