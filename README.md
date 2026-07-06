@@ -11,6 +11,10 @@
 
 </div>
 
+<div align="center">
+  <img src="assets/typing.svg" alt="typing demo" width="500">
+</div>
+
 # StylerX — make OBS look how you want
 
 yo, this is a plugin for OBS Studio that lets you change the whole look of it in real time. no more being stuck with the same dark theme forever. every color, every panel, every button — you can tweak it all while obs is running and see the changes instantly.

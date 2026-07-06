@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 60" width="500" height="60">
+  <rect width="100%" height="100%" fill="#1e1e1e" rx="8"/>
+  <style>
+    @keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0 } }
+    @keyframes type1 { from { width:0 } to { width:212px } }
+    @keyframes type2 { from { width:0 } to { width:165px } }
+    .cursor { animation: blink 1s step-end infinite; fill:#0078d4; }
+    .t1 { animation: type1 1.5s steps(20) forwards; overflow:hidden; white-space:nowrap; }
+    .t2 { animation: type2 1.5s steps(16) 1.8s forwards; overflow:hidden; white-space:nowrap; }
+  </style>
+  <foreignObject x="20" y="10" width="460" height="40">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Consolas','Courier New',monospace;font-size:15px;color:#d4d4d4;">
+      <div style="display:flex;align-items:center;">
+        <span style="color:#89b4fa;">$</span>
+        <span style="color:#a6e3a1;margin-left:6px;" class="t1">stylerx --theme live</span>
+        <span class="cursor" style="margin-left:2px;">▊</span>
+      </div>
+      <div style="display:flex;align-items:center;margin-top:2px;">
+        <span style="color:#6c7086;">▸</span>
+        <span style="color:#f9e2af;margin-left:6px;" class="t2">theme applied ✓</span>
+        <span class="cursor" style="margin-left:2px;">▊</span>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
