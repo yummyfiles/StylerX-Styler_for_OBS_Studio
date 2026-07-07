@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/stylerx-logo.svg" alt="StylerX" width="600">
+<img src="assets/stylerx-logo.svg" alt="StylerX" width="700">
 
 </div>
 
