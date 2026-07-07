@@ -30,6 +30,7 @@ void WidgetInspector::setEnabled(bool enabled) {
 
 void WidgetInspector::clearHighlights() {
     if (m_highlightOverlay) {
+        m_highlightOverlay->hide();
         m_highlightOverlay->deleteLater();
         m_highlightOverlay = nullptr;
     }
@@ -42,10 +43,17 @@ bool WidgetInspector::eventFilter(QObject *obj, QEvent *event) {
     QWidget *widget = qobject_cast<QWidget*>(obj);
     if (!widget) return false;
 
-    if (!widget->isWindow() && !widget->inherits("QMainWindow") &&
-        !widget->inherits("QDockWidget") && !widget->inherits("QDialog")) {
-        QWidget *tlw = widget->window();
-        if (tlw && tlw->objectName() == "StylerXDock") return false;
+    {
+        QWidget *p = widget;
+        while (p) {
+            QString name = p->objectName();
+            if (name == "StylerXDock" || name == "stylerx_dock") {
+                clearHighlights();
+                m_hoveredWidget = nullptr;
+                return false;
+            }
+            p = p->parentWidget();
+        }
     }
 
     switch (event->type()) {
@@ -95,6 +103,7 @@ void WidgetInspector::highlightWidget(QWidget *widget, bool highlight) {
     widget->update();
 
     if (m_highlightOverlay) {
+        m_highlightOverlay->hide();
         m_highlightOverlay->deleteLater();
         m_highlightOverlay = nullptr;
     }
@@ -103,25 +112,21 @@ void WidgetInspector::highlightWidget(QWidget *widget, bool highlight) {
     overlay->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint | Qt::WindowTransparentForInput);
     overlay->setAttribute(Qt::WA_TransparentForMouseEvents, true);
     overlay->setAttribute(Qt::WA_ShowWithoutActivating, true);
-    overlay->setStyleSheet("background: transparent;");
+    overlay->setAttribute(Qt::WA_TranslucentBackground, true);
+
+    int r, g, b, br, bg, bb;
+    m_highlightColor.getRgb(&r, &g, &b);
+    m_borderColor.getRgb(&br, &bg, &bb);
+
+    overlay->setStyleSheet(QString(
+        "background-color: rgba(%1, %2, %3, 32);"
+        "border: 2px solid rgba(%4, %5, %6, 200);"
+    ).arg(r).arg(g).arg(b).arg(br).arg(bg).arg(bb));
 
     QPoint globalPos = widget->mapToGlobal(QPoint(0, 0));
     QSize size = widget->size();
     overlay->setGeometry(globalPos.x(), globalPos.y(), size.width(), size.height());
     overlay->raise();
-    overlay->show();
-
-    QPainter painter;
-    QPixmap pm(size);
-    pm.fill(Qt::transparent);
-    painter.begin(&pm);
-    painter.fillRect(pm.rect(), m_highlightColor);
-    painter.setPen(QPen(m_borderColor, 2));
-    painter.drawRect(pm.rect().adjusted(1, 1, -2, -2));
-    painter.end();
-
-    overlay->setMask(pm.createMaskFromColor(Qt::transparent));
-    overlay->setStyleSheet("background: transparent;");
     overlay->show();
 
     m_highlightOverlay = overlay;

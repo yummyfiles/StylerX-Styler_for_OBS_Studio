@@ -148,15 +148,22 @@ QString StyleParser::buildQSS(const ThemeData &theme) const {
 
     s << "/* StylerX - Auto-generated stylesheet */\n\n";
 
-    s << "/* Root variables for dynamic updates */\n";
-    s << "QMainWindow, QDialog, QWidget#centralWidget {\n";
+    s << "/* Base catch-all for unthemed widgets (lowest priority) */\n";
+    s << "* {\n";
+    s << "  background-color: " << panelsStr << ";\n";
+    s << "  color: " << txtStr << ";\n";
+    s << "}\n\n";
+
+    s << "/* Main window area */\n";
+    s << "QMainWindow, QMainWindow > QWidget, QMainWindow QFrame, QMainWindow QStackedWidget, QDialog {\n";
     s << "  background-color: " << bgStr << ";\n";
     s << "  color: " << txtStr << ";\n";
     s << "}\n\n";
 
     s << "/* Panels & Docks */\n";
-    s << "QWidget#panels, QWidget#panelArea, QWidget#panelContainer,\n";
-    s << "QDockWidget, QDockWidget::title {\n";
+    s << "QDockWidget, QDockWidget::title,\n";
+    s << "QDockWidget > QWidget, QDockWidget > QScrollArea,\n";
+    s << "QDockWidget QFrame {\n";
     s << "  background-color: " << dockBgStr << ";\n";
     s << "  color: " << txtStr << ";\n";
     s << "  border: 1px solid " << borderStr << ";\n";

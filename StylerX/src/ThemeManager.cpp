@@ -4,6 +4,7 @@
 #include "StyleParser.h"
 #include "ThemeApplier.h"
 #include "SettingsManager.h"
+#include <QApplication>
 #include <QDir>
 #include <QFileInfo>
 
@@ -208,7 +209,8 @@ void ThemeManager::updateColor(const QString &themeId, const QString &colorKey, 
     it->colors[colorKey] = color;
     it->markModified();
 
-    ThemeApplier::instance().applyColorUpdate(it.value(), colorKey);
+    StyleParser::instance().clearCache();
+    ThemeApplier::instance().applyTheme(it.value());
 
     if (!it->isReadOnly) {
         ThemeLibraryManager::instance().saveTheme(it.value());

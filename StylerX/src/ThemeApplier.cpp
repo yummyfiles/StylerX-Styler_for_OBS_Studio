@@ -67,18 +67,11 @@ void ThemeApplier::applyColorUpdate(const ThemeData &theme, const QString &color
 void ThemeApplier::setStyleSheet(const QString &styleSheet) {
     m_stylerXStyleSheet = styleSheet;
 
-    QWidget *mainWindow = nullptr;
     for (QWidget *widget : QApplication::topLevelWidgets()) {
-        if (qobject_cast<QMainWindow*>(widget)) {
-            mainWindow = widget;
-            break;
-        }
+        widget->setStyleSheet(styleSheet);
     }
 
-    if (mainWindow) {
-        mainWindow->setStyleSheet(styleSheet);
-        refreshAllWidgets();
-    }
+    refreshAllWidgets();
 }
 
 void ThemeApplier::applyRawStyleSheet(const QString &qss) {
@@ -88,18 +81,11 @@ void ThemeApplier::applyRawStyleSheet(const QString &qss) {
 void ThemeApplier::clearStylerXStyles() {
     m_stylerXStyleSheet.clear();
 
-    QWidget *mainWindow = nullptr;
     for (QWidget *widget : QApplication::topLevelWidgets()) {
-        if (qobject_cast<QMainWindow*>(widget)) {
-            mainWindow = widget;
-            break;
-        }
+        widget->setStyleSheet("");
     }
 
-    if (mainWindow) {
-        mainWindow->setStyleSheet("");
-        refreshAllWidgets();
-    }
+    refreshAllWidgets();
 }
 
 void ThemeApplier::refreshAllWidgets() {
