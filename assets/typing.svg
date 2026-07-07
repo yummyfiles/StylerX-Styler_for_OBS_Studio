@@ -7,20 +7,20 @@
     @keyframes type2 { from { max-width:0 } to { max-width:300px } }
     @keyframes type3 { from { max-width:0 } to { max-width:300px } }
     @keyframes show { 0%,69% { opacity:0;max-height:0 } 70%,100% { opacity:1;max-height:30px } }
-    @keyframes show2 { 0%,84% { opacity:0;max-height:0 } 85%,100% { opacity:1;max-height:30px } }
-    @keyframes show3 { 0%,89% { opacity:0;max-height:0 } 90%,100% { opacity:1;max-height:30px } }
-    @keyframes show4 { 0%,94% { opacity:0;max-height:0 } 95%,100% { opacity:1;max-height:30px } }
-    @keyframes barGrow { 0%,69% { width:0 } 70%,100% { width:200px } }
+    @keyframes show2 { 0%,39% { opacity:0;max-height:0 } 40%,100% { opacity:1;max-height:30px } }
+    @keyframes show3 { 0%,59% { opacity:0;max-height:0 } 60%,100% { opacity:1;max-height:30px } }
+    @keyframes show4 { 0%,84% { opacity:0;max-height:0 } 85%,100% { opacity:1;max-height:30px } }
+    @keyframes barGrow { 0% { width:0 } 100% { width:200px } }
 
     .ln { overflow:hidden; white-space:nowrap; display:block; }
     .t1 { animation:type1 1s steps(20) forwards; }
     .t2 { animation:type2 0.8s steps(12) 1.5s forwards; }
     .r1 { animation:show 3.5s forwards; }
-    .r2 { animation:show2 5s forwards; }
-    .r3 { animation:show3 5.8s forwards; }
-    .r4 { animation:show4 6.5s forwards; }
+    .r2 { animation:show2 8s forwards; }
+    .r3 { animation:show3 8s forwards; }
+    .r4 { animation:show4 8s forwards; }
     .bar { height:12px; background:#3c3c3c; overflow:hidden; display:inline-block; width:200px; vertical-align:middle; }
-    .fill { height:100%; background:#ffffff; animation:barGrow 6s forwards; display:block; }
+    .fill { height:100%; background:#ffffff; animation:barGrow 1.5s forwards; display:block; }
   </style>
 
   <!-- CENTERED: x="183" width="234" -->
