@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 130">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 170">
   <style>
     text { font-family: 'Courier New', Courier, monospace; font-size: 20px; font-weight: bold; }
   </style>
-  <text x="10" y="28" fill="#0078d4" xml:space="preserve">  ██╗    ███████╗████████╗██╗   ██╗██╗     ███████╗██████╗ ██╗  ██╗    ██╗</text>
-  <text x="10" y="50" fill="#0078d4" xml:space="preserve"> ██╔╝    ██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝██╔══██╗╚██╗██╔╝    ╚██╗</text>
-  <text x="10" y="72" fill="#0078d4" xml:space="preserve">██╔╝     ███████╗   ██║    ╚████╔╝ ██║     █████╗  ██████╔╝ ╚███╔╝      ╚██╗</text>
-  <text x="10" y="94" fill="#1a8cff" xml:space="preserve">╚██╗     ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  ██╔══██╗ ██╔██╗      ██╔╝</text>
-  <text x="10" y="116" fill="#1a8cff" xml:space="preserve"> ╚██╗    ███████║   ██║      ██║   ███████╗███████╗██║  ██║██╔╝ ██╗    ██╔╝</text>
-  <text x="10" y="138" fill="#1a8cff" xml:space="preserve">  ╚═╝    ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝</text>
+  <text x="10" y="32" fill="#0078d4" xml:space="preserve">  ██╗    ███████╗████████╗██╗   ██╗██╗     ███████╗██████╗ ██╗  ██╗    ██╗</text>
+  <text x="10" y="56" fill="#0078d4" xml:space="preserve"> ██╔╝    ██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝██╔══██╗╚██╗██╔╝    ╚██╗</text>
+  <text x="10" y="80" fill="#0078d4" xml:space="preserve">██╔╝     ███████╗   ██║    ╚████╔╝ ██║     █████╗  ██████╔╝ ╚███╔╝      ╚██╗</text>
+  <text x="10" y="104" fill="#0078d4" xml:space="preserve">╚██╗     ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  ██╔══██╗ ██╔██╗      ██╔╝</text>
+  <text x="10" y="128" fill="#0078d4" xml:space="preserve"> ╚██╗    ███████║   ██║      ██║   ███████╗███████╗██║  ██║██╔╝ ██╗    ██╔╝</text>
+  <text x="10" y="152" fill="#0078d4" xml:space="preserve">  ╚═╝    ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝</text>
 </svg>
