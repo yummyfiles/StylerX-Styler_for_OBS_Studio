@@ -23,14 +23,13 @@
     .fill { height:100%; background:#ffffff; animation:barGrow 6s forwards; display:block; }
   </style>
 
-  <!-- CENTERED: x="0" width="600" -->
-  <foreignObject x="0" y="10" width="600" height="130">
+  <!-- CENTERED: x="183" width="234" -->
+  <foreignObject x="183" y="10" width="234" height="130">
     <div xmlns="http://www.w3.org/1999/xhtml"
          style="font-family:'Consolas','Courier New',monospace;
                 font-size:13px;
                 color:#d4d4d4;
-                line-height:1.7;
-                padding-left:20px;">
+                line-height:1.7;">
 
       <div class="ln t1" style="color:#89b4fa;">
         $ <span style="color:#a6e3a1;">stylerx build --release</span>
