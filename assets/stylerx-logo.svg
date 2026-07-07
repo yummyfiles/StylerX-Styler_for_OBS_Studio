@@ -1,18 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 1100 170"
-     fill="#ffffff">
-
-  <g font-family="Courier New, monospace"
-     font-size="22"
-     font-weight="bold"
-     text-anchor="middle">
-
-    <text x="550" y="32">██╗    ███████╗████████╗██╗   ██╗██╗     ███████╗██████╗ ██╗  ██╗    ██╗</text>
-    <text x="550" y="57">██╔╝    ██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝██╔══██╗╚██╗██╔╝    ╚██╗</text>
-    <text x="550" y="82">██╔╝     ███████╗   ██║    ╚████╔╝ ██║     █████╗  ██████╔╝ ╚███╔╝      ╚██╗</text>
-    <text x="550" y="107">╚██╗     ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  ██╔══██╗ ██╔██╗      ██╔╝</text>
-    <text x="550" y="132">╚██╗    ███████║   ██║      ██║   ███████╗███████╗██║  ██║██╔╝ ██╗    ██╔╝</text>
-    <text x="550" y="157">╚═╝    ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝</text>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 170" overflow="visible">
+  <style>
+    text { font-family: 'Courier New', Courier, monospace; font-size: 22px; font-weight: bold; }
+  </style>
+  <g transform="translate(189, 0)">
+    <text x="10" y="32" fill="#ffffff" xml:space="preserve">  ██╗    ███████╗████████╗██╗   ██╗██╗     ███████╗██████╗ ██╗  ██╗    ██╗</text>
+    <text x="10" y="57" fill="#ffffff" xml:space="preserve"> ██╔╝    ██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝██╔══██╗╚██╗██╔╝    ╚██╗</text>
+    <text x="10" y="82" fill="#ffffff" xml:space="preserve">██╔╝     ███████╗   ██║    ╚████╔╝ ██║     █████╗  ██████╔╝ ╚███╔╝      ╚██╗</text>
+    <text x="10" y="107" fill="#ffffff" xml:space="preserve">╚██╗     ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  ██╔══██╗ ██╔██╗      ██╔╝</text>
+    <text x="10" y="132" fill="#ffffff" xml:space="preserve"> ╚██╗    ███████║   ██║      ██║   ███████╗███████╗██║  ██║██╔╝ ██╗    ██╔╝</text>
+    <text x="10" y="157" fill="#ffffff" xml:space="preserve">  ╚═╝    ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝</text>
   </g>
 </svg>
