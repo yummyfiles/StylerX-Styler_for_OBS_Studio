@@ -1,25 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 60" width="500" height="60">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150" width="600" height="150">
   <rect width="100%" height="100%" fill="#1e1e1e" rx="8"/>
   <style>
     @keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0 } }
-    @keyframes type1 { from { width:0 } to { width:212px } }
-    @keyframes type2 { from { width:0 } to { width:165px } }
-    .cursor { animation: blink 1s step-end infinite; fill:#0078d4; }
-    .t1 { animation: type1 1.5s steps(20) forwards; overflow:hidden; white-space:nowrap; }
-    .t2 { animation: type2 1.5s steps(16) 1.8s forwards; overflow:hidden; white-space:nowrap; }
+    @keyframes type1 { from { max-width:0 } to { max-width:300px } }
+    @keyframes type2 { from { max-width:0 } to { max-width:300px } }
+    @keyframes type3 { from { max-width:0 } to { max-width:300px } }
+    @keyframes show { 0%,69% { opacity:0;max-height:0 } 70%,100% { opacity:1;max-height:30px } }
+    @keyframes show2 { 0%,84% { opacity:0;max-height:0 } 85%,100% { opacity:1;max-height:30px } }
+    @keyframes show3 { 0%,89% { opacity:0;max-height:0 } 90%,100% { opacity:1;max-height:30px } }
+    @keyframes show4 { 0%,94% { opacity:0;max-height:0 } 95%,100% { opacity:1;max-height:30px } }
+    @keyframes barGrow { 0%,69% { width:0 } 70%,89% { width:200px } 90%,100% { width:200px } }
+    @keyframes spin1 { 0%,20% { opacity:1 } 21%,100% { opacity:0 } }
+    @keyframes spin2 { 0%,20% { opacity:0 } 21%,40% { opacity:1 } 41%,100% { opacity:0 } }
+    @keyframes spin3 { 0%,40% { opacity:0 } 41%,60% { opacity:1 } 61%,100% { opacity:0 } }
+    @keyframes spin4 { 0%,60% { opacity:0 } 61%,80% { opacity:1 } 81%,100% { opacity:0 } }
+    @keyframes spinLoop { 0%,69% { opacity:0 } 70%,94% { opacity:1 } 95%,100% { opacity:0 } }
+    .ln { overflow:hidden; white-space:nowrap; display:block; }
+    .t1 { animation:type1 1s steps(20) forwards; }
+    .t2 { animation:type2 0.8s steps(12) 1.5s forwards; }
+    .t3 { animation:type3 0.8s steps(10) 4.8s forwards; }
+    .r1 { animation:show 3.5s forwards; }
+    .r2 { animation:show2 5s forwards; }
+    .r3 { animation:show3 5.8s forwards; }
+    .r4 { animation:show4 6.5s forwards; }
+    .sp { animation:spinLoop 6s forwards; display:inline; }
+    .s1 { animation:spin1 0.6s infinite; display:inline; }
+    .s2 { animation:spin2 0.6s infinite; display:inline; }
+    .s3 { animation:spin3 0.6s infinite; display:inline; }
+    .s4 { animation:spin4 0.6s infinite; display:inline; }
+    .bar { height:12px; background:#3c3c3c; border-radius:6px; overflow:hidden; display:inline-block; width:200px; vertical-align:middle; }
+    .fill { height:100%; background:linear-gradient(90deg,#0078d4,#4fc3f7); border-radius:6px; animation:barGrow 6s forwards; display:block; }
   </style>
-  <foreignObject x="20" y="10" width="460" height="40">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Consolas','Courier New',monospace;font-size:15px;color:#d4d4d4;">
-      <div style="display:flex;align-items:center;">
-        <span style="color:#89b4fa;">$</span>
-        <span style="color:#a6e3a1;margin-left:6px;" class="t1">stylerx --theme live</span>
-        <span class="cursor" style="margin-left:2px;">▊</span>
+  <foreignObject x="20" y="10" width="560" height="130">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Consolas','Courier New',monospace;font-size:13px;color:#d4d4d4;line-height:1.7;">
+      <div class="ln t1" style="color:#89b4fa;">$ <span style="color:#a6e3a1;">stylerx build --release</span></div>
+      <div class="r1" style="color:#6c7086;">  ✓ Build complete</div>
+      <div class="ln t2" style="color:#89b4fa;">$ <span style="color:#a6e3a1;">stylerx install</span></div>
+      <div class="r2" style="color:#f9e2af;">  Installing plugin...</div>
+      <div class="r3" style="display:flex;align-items:center;gap:8px;">
+        <span style="color:#6c7086;">  [</span>
+        <span class="bar"><span class="fill"></span></span>
+        <span style="color:#6c7086;">]</span>
+        <span class="sp" style="color:#4fc3f7;">
+          <span class="s1">/</span><span class="s2">-</span><span class="s3">\</span><span class="s4">|</span>
+        </span>
       </div>
-      <div style="display:flex;align-items:center;margin-top:2px;">
-        <span style="color:#6c7086;">▸</span>
-        <span style="color:#f9e2af;margin-left:6px;" class="t2">theme applied ✓</span>
-        <span class="cursor" style="margin-left:2px;">▊</span>
-      </div>
+      <div class="r4" style="color:#6c7086;">  ✓ Install complete</div>
     </div>
   </foreignObject>
 </svg>
