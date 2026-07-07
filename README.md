@@ -12,19 +12,13 @@
 
 <!-- Navigation -->
 <p align="center">
-  <a href="docs/wiki/Home.md"><strong>📖 Wiki</strong></a>
-  &nbsp;•&nbsp;
-  <a href="docs/wiki/Installation.md">Installation</a>
-  &nbsp;•&nbsp;
-  <a href="docs/wiki/Building-from-Source.md">Building</a>
-  &nbsp;•&nbsp;
-  <a href="docs/wiki/Usage.md">Usage</a>
-  &nbsp;•&nbsp;
-  <a href="docs/wiki/Theme-Format.md">Theme Format</a>
-  &nbsp;•&nbsp;
-  <a href="docs/wiki/CLI-Reference.md">CLI</a>
-  &nbsp;•&nbsp;
-  <a href="docs/wiki/Troubleshooting.md">Troubleshooting</a>
+  <a href="docs/wiki/Home.md"><img src="https://img.shields.io/badge/Wiki-Home-0078d4?style=flat-square" alt="Wiki"></a>
+  <a href="docs/wiki/Installation.md"><img src="https://img.shields.io/badge/Installation-Get_Started-2ea44f?style=flat-square" alt="Installation"></a>
+  <a href="docs/wiki/Building-from-Source.md"><img src="https://img.shields.io/badge/Building-From_Source-d47500?style=flat-square" alt="Building"></a>
+  <a href="docs/wiki/Usage.md"><img src="https://img.shields.io/badge/Usage-Guide-8250df?style=flat-square" alt="Usage"></a>
+  <a href="docs/wiki/Theme-Format.md"><img src="https://img.shields.io/badge/Theme_Format-Reference-1b9aaa?style=flat-square" alt="Theme Format"></a>
+  <a href="docs/wiki/CLI-Reference.md"><img src="https://img.shields.io/badge/CLI-Reference-6e7681?style=flat-square" alt="CLI"></a>
+  <a href="docs/wiki/Troubleshooting.md"><img src="https://img.shields.io/badge/Troubleshooting-Help-cf222e?style=flat-square" alt="Troubleshooting"></a>
 </p>
 
 <h1 align="center">StylerX — make OBS look how you want</h1>
