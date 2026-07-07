@@ -15,6 +15,22 @@
   <img src="assets/typing.svg" alt="typing demo" width="500">
 </div>
 
+<p align="center">
+  <a href="docs/wiki/Home.md">📖 Wiki</a>
+  ·
+  <a href="docs/wiki/Installation.md">Installation</a>
+  ·
+  <a href="docs/wiki/Building-from-Source.md">Building</a>
+  ·
+  <a href="docs/wiki/Usage.md">Usage</a>
+  ·
+  <a href="docs/wiki/Theme-Format.md">Theme Format</a>
+  ·
+  <a href="docs/wiki/CLI-Reference.md">CLI</a>
+  ·
+  <a href="docs/wiki/Troubleshooting.md">Troubleshooting</a>
+</p>
+
 # StylerX — make OBS look how you want
 
 yo, this is a plugin for OBS Studio that lets you change the whole look of it in real time. no more being stuck with the same dark theme forever. every color, every panel, every button — you can tweak it all while obs is running and see the changes instantly.

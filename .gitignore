@@ -1,6 +1,8 @@
 build/
 StylerX/deps/qt6/
-StylerX/deps/obs-sdk/lib/
+StylerX/deps/obs-sdk/lib/*.lib
+StylerX/deps/obs-sdk/lib/*.exp
+StylerX/deps/obs-sdk/lib/*.exports
 *.user
 *.suo
 .vs/
