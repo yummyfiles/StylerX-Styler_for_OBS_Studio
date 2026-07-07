@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 170" overflow="visible">
   <style>
-    text { font-family: 'Courier New', Courier, monospace; font-size: 22px; font-weight: bold; fill: #ffffff; }
+    text { font-family: 'Courier New', Courier, monospace; font-size: 22px; font-weight: bold; text-anchor: middle; }
   </style>
-  <g transform="translate(230, 0)">
-    <text x="10" y="32" xml:space="preserve">  ██╗    ███████╗████████╗██╗   ██╗██╗     ███████╗██████╗ ██╗  ██╗    ██╗</text>
-    <text x="10" y="57" xml:space="preserve"> ██╔╝    ██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝██╔══██╗╚██╗██╔╝    ╚██╗</text>
-    <text x="10" y="82" xml:space="preserve">██╔╝     ███████╗   ██║    ╚████╔╝ ██║     █████╗  ██████╔╝ ╚███╔╝      ╚██╗</text>
-    <text x="10" y="107" xml:space="preserve">╚██╗     ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  ██╔══██╗ ██╔██╗      ██╔╝</text>
-    <text x="10" y="132" xml:space="preserve"> ╚██╗    ███████║   ██║      ██║   ███████╗███████╗██║  ██║██╔╝ ██╗    ██╔╝</text>
-    <text x="10" y="157" xml:space="preserve">  ╚═╝    ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝</text>
+  <g transform="translate(0, 0)">
+    <text x="700" y="32" fill="#ffffff" xml:space="preserve">  ██╗    ███████╗████████╗██╗   ██╗██╗     ███████╗██████╗ ██╗  ██╗    ██╗</text>
+    <text x="700" y="57" fill="#ffffff" xml:space="preserve"> ██╔╝    ██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝██╔══██╗╚██╗██╔╝    ╚██╗</text>
+    <text x="700" y="82" fill="#ffffff" xml:space="preserve">██╔╝     ███████╗   ██║    ╚████╔╝ ██║     █████╗  ██████╔╝ ╚███╔╝      ╚██╗</text>
+    <text x="700" y="107" fill="#ffffff" xml:space="preserve">╚██╗     ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  ██╔══██╗ ██╔██╗      ██╔╝</text>
+    <text x="700" y="132" fill="#ffffff" xml:space="preserve"> ╚██╗    ███████║   ██║      ██║   ███████╗███████╗██║  ██║██╔╝ ██╗    ██╔╝</text>
+    <text x="700" y="157" fill="#ffffff" xml:space="preserve">  ╚═╝    ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝</text>
   </g>
 </svg>

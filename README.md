@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/stylerx-logo.svg" alt="StylerX" width="800">
+  <img src="assets/stylerx-logo.svg" alt="StylerX" width="650">
 </div>
 
 <div align="center">
