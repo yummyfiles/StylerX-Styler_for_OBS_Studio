@@ -122,11 +122,12 @@ def get_obs_data_dirs():
     """Detect OBS Studio plugin directories."""
     if sys.platform == "win32":
         program_files = Path(os.environ.get("ProgramFiles", "C:\\Program Files"))
+        obs_env = os.environ.get("OBS_PATH", "")
         obs_paths = [
             program_files / "obs-studio",
-            Path(os.environ.get("OBS_PATH", "")),
+            Path(obs_env) if obs_env else None,
         ]
-        obs_paths = [p for p in obs_paths if p and p.exists()]
+        obs_paths = [p for p in obs_paths if p and str(p) and p.exists()]
         if not obs_paths:
             obs_paths = list(program_files.parent.glob("OBS*"))
             obs_paths += list(program_files.glob("**/obs-studio"))
@@ -177,61 +178,140 @@ def cmd_doctor(args):
     print(bold(" StylerX Diagnostics"))
     print()
 
-    tests = [
-        ("Operating system detected", lambda: True),
-        ("OBS Studio found", lambda: len(get_obs_data_dirs()) > 0),
-        ("Plugin directory valid", _check_plugin_dirs),
-        ("Theme engine ready", _check_theme_engine),
-        ("Installation healthy", _check_installation),
-    ]
-
     all_pass = True
-    for label, test_fn in tests:
-        try:
-            result = test_fn()
-            if result:
-                print(f"  {SUCCESS} {label}")
-            else:
-                print(f"  {ERROR} {label}")
-                all_pass = False
-        except Exception as e:
-            print(f"  {ERROR} {label}")
-            print(f"         {dim(str(e))}")
+
+    # 1. OS check
+    print(f"  {SUCCESS} Operating system detected")
+
+    # 2. OBS install check
+    obs_dirs = get_obs_data_dirs()
+    if obs_dirs:
+        print(f"  {SUCCESS} OBS Studio found")
+        for d in obs_dirs:
+            print(f"          {dim(str(d))}")
+    else:
+        print(f"  {ERROR} OBS Studio found")
+        print(f"          {dim('Install OBS Studio from https://obsproject.com/download')}")
+        all_pass = False
+
+    # 3. Plugin DLL check — Program Files and AppData
+    dll_found = False
+    checked_paths = []
+
+    if sys.platform == "win32":
+        appdata_path = Path(os.environ.get("APPDATA", "")) / "obs-studio" / "plugins" / "64bit" / "styler-x.dll"
+        checked_paths.append(appdata_path)
+
+        for obs_dir in obs_dirs:
+            progfiles_path = obs_dir / "obs-plugins" / "64bit" / "styler-x.dll"
+            checked_paths.append(progfiles_path)
+
+        found_at = None
+        for p in checked_paths:
+            if p.exists():
+                found_at = p
+                dll_found = True
+                break
+
+        if dll_found:
+            print(f"  {SUCCESS} Plugin installation found")
+            print(f"          {dim(str(found_at))}")
+        else:
+            print(f"  {ERROR} Plugin installation found")
+            print(f"          {dim('styler-x.dll not found. Run:')}")
+            print(f"          {dim('  stylerx install --build-dir StylerX/build')}")
             all_pass = False
 
-    print()
-    if all_pass:
-        print(f"  {bold(green('All checks passed. StylerX is healthy.'))}")
     else:
-        print(f"  {bold(red('Some checks failed. Run `stylerx install` to fix.'))}")
-    print()
-    return 0 if all_pass else 1
+        # macOS/Linux — check standard paths
+        for obs_dir in obs_dirs:
+            plugin_path, _ = get_stylerx_paths(obs_dir)
+            checked_paths.append(plugin_path)
 
+        found_at = None
+        for p in checked_paths:
+            if p.exists():
+                found_at = p
+                dll_found = True
+                break
 
-def _check_plugin_dirs():
-    for obs_dir in get_obs_data_dirs():
-        plugin_path, data_dir = get_stylerx_paths(obs_dir)
-        if plugin_path.exists() or plugin_path.parent.exists():
-            return True
-    return False
+        if dll_found:
+            print(f"  {SUCCESS} Plugin installation found")
+            print(f"          {dim(str(found_at))}")
+        else:
+            print(f"  {ERROR} Plugin installation found")
+            print(f"          {dim('Plugin file not found. Run:')}")
+            print(f"          {dim('  stylerx install --build-dir StylerX/build')}")
+            all_pass = False
 
-
-def _check_theme_engine():
+    # 4. Theme engine check
     if sys.platform == "win32":
         appdata = Path(os.environ.get("APPDATA", ""))
         theme_dir = appdata / "StylerX" / "themes"
     else:
         theme_dir = Path.home() / ".config" / "stylerx" / "themes"
-    return theme_dir.exists() or True
+
+    if theme_dir.exists():
+        print(f"  {SUCCESS} Theme engine ready")
+        print(f"          {dim(str(theme_dir))}")
+    else:
+        print(f"  {WORKING} Theme engine ready")
+        print(f"          {dim('Themes directory will be created on first run')}")
+        all_pass = False
+
+    # 5. OBS log check
+    if sys.platform == "win32":
+        log_dir = Path(os.environ.get("APPDATA", "")) / "obs-studio" / "logs"
+        if log_dir.exists():
+            logs = sorted(log_dir.glob("*.txt"), key=lambda f: f.stat().st_mtime, reverse=True)
+            if logs:
+                latest = logs[0]
+                with open(latest, "r", errors="replace") as f:
+                    for line in f:
+                        if "styler" in line.lower():
+                            line = line.strip()
+                            if "loaded successfully" in line.lower():
+                                print(f"  {SUCCESS} OBS log confirms plugin loaded")
+                                print(f"          {dim(line[:120])}")
+                            elif "failed" in line.lower() or "error" in line.lower():
+                                print(f"  {ERROR} OBS log shows plugin load error")
+                                print(f"          {dim(line[:120])}")
+                                all_pass = False
+                            else:
+                                print(f"  {WORKING} OBS log entry found")
+                                print(f"          {dim(line[:120])}")
+                            break
+                    else:
+                        print(f"  {WORKING} OBS log checked")
+                        print(f"          {dim('No styler-x entries in latest log')}")
+            else:
+                print(f"  {WORKING} OBS log checked")
+                print(f"          {dim('No OBS log files found')}")
+        else:
+            print(f"  {WORKING} OBS log checked")
+            print(f"          {dim('Log directory not found')}")
+
+    print()
+    if all_pass:
+        print(f"  {bold(green('All checks passed. StylerX is healthy.'))}")
+    else:
+        print(f"  {bold(red('Some checks failed.'))}")
+        if not dll_found:
+            print(f"  {bold(red('Run `stylerx install --build-dir StylerX/build` first.'))}")
+    print()
+    return 0 if all_pass else 1
+
+
+def _check_plugin_dirs():
+    return None  # unused, kept for compatibility
+
+
+def _check_theme_engine():
+    return None  # unused, kept for compatibility
 
 
 def _check_installation():
-    if sys.platform == "win32":
-        appdata = Path(os.environ.get("APPDATA", ""))
-        settings = appdata / "StylerX" / "settings.ini"
-    else:
-        settings = Path.home() / ".config" / "stylerx" / "settings.ini"
-    return True
+    return None  # unused, kept for compatibility
 
 
 def cmd_install(args):
@@ -297,15 +377,39 @@ def _prepare_dirs(args):
 
 def _install_plugin(obs_dir, args):
     plugin_path, data_dir = get_stylerx_paths(obs_dir)
-    plugin_path.parent.mkdir(parents=True, exist_ok=True)
     data_dir.mkdir(parents=True, exist_ok=True)
 
-    if args.build_dir:
-        build_dir = Path(args.build_dir)
-        built_plugin = build_dir / "styler-x.dll"
-        if built_plugin.exists():
-            shutil.copy2(str(built_plugin), str(plugin_path))
-            print(f"\n         Copied: {built_plugin} → {plugin_path}")
+    if not args.build_dir:
+        return
+
+    build_dir = Path(args.build_dir)
+    built_plugin = build_dir / "styler-x.dll"
+    if not built_plugin.exists():
+        print(f"\n         {red('[✗]')} Built plugin not found at: {built_plugin}")
+        return
+
+    # Try Program Files first, fall back to AppData
+    dest = plugin_path
+    try:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(str(built_plugin), str(dest))
+        print(f"\n         Copied: {built_plugin} → {dest}")
+        return
+    except PermissionError:
+        pass
+
+    # Fall back to user-level AppData path
+    if sys.platform == "win32":
+        appdata_plugin = Path(os.environ.get("APPDATA", "")) / "obs-studio" / "plugins" / "64bit" / "styler-x.dll"
+        appdata_plugin.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            shutil.copy2(str(built_plugin), str(appdata_plugin))
+            print(f"\n         Copied: {built_plugin} → {appdata_plugin}")
+            print(f"         {yellow('[!]')} Program Files requires admin — used AppData instead")
+            return
+        except PermissionError:
+            print(f"\n         {red('[✗]')} Could not write to Program Files (needs admin) or AppData")
+            print(f"         Run this terminal as Administrator and try again")
 
 
 def _configure_themes(args):
