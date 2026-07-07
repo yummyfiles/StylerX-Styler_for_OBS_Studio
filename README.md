@@ -1,11 +1,9 @@
 <div align="center">
-
-<img src="assets/stylerx-logo.svg" alt="StylerX" width="700">
-
+  <img src="assets/stylerx-logo.svg" alt="StylerX" width="800">
 </div>
 
 <div align="center">
-  <img src="assets/typing.svg" alt="typing demo" width="500">
+  <img src="assets/typing.svg" alt="typing demo" width="600">
 </div>
 
 <p align="center">
