@@ -19,9 +19,8 @@
     .r2 { animation:show2 5s forwards; }
     .r3 { animation:show3 5.8s forwards; }
     .r4 { animation:show4 6.5s forwards; }
-
-    .bar { height:12px; background:#3c3c3c; border-radius:6px; overflow:hidden; display:inline-block; width:200px; vertical-align:middle; }
-    .fill { height:100%; background:linear-gradient(90deg,#0078d4,#4fc3f7); border-radius:6px; animation:barGrow 6s forwards; display:block; }
+    .bar { height:12px; background:#3c3c3c; overflow:hidden; display:inline-block; width:200px; vertical-align:middle; }
+    .fill { height:100%; background:#ffffff; animation:barGrow 6s forwards; display:block; }
   </style>
 
   <!-- CENTERED: x="0" width="600" -->
