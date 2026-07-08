@@ -57,7 +57,7 @@ also comes with a python cli (`stylerx-cli/stylerx.py`) for install, uninstall, 
 first, get the repo — either clone it or [download the zip](https://github.com/yummyfiles/StylerX-Styler_for_OBS_Studio/archive/refs/heads/main.zip). if you downloaded the zip, extract it first. then cd into the folder:
 
 ```powershell
-cd C:\Users\yourname\Downloads\StylerX-Styler_for_OBS_Studio-main
+cd C:\Users\yourname\Downloads\StylerX-Styler_for_OBS_Studio-main\StylerX-Styler_for_OBS_Studio-main
 ```
 
 then run the installer:
