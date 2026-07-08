@@ -1,8 +1,8 @@
 <!-- Banner Logo -->
 <img src="assets/stylerx-logo.svg"
-     alt="StylerX"
+     alt="StylerX — Live Theme Engine for OBS Studio"
      width="100%"
-     style="display:block;margin:0 auto 20px auto;" />
+     style="display:block;margin:0 auto 30px auto;" />
 
 <!-- Typing Demo -->
 <img src="assets/typing.svg"
@@ -215,15 +215,24 @@ the built dll will be at `StylerX/build/Release/styler-x.dll`.
 ### manual way
 
 ```powershell
+# copy the plugin dll (pdb is optional, only needed for debugging)
 copy "StylerX\build\Release\styler-x.dll" "%ProgramFiles%\obs-studio\obs-plugins\64bit\"
-copy "StylerX\build\Release\styler-x.pdb" "%ProgramFiles%\obs-studio\obs-plugins\64bit\"
+# optional debug symbols:
+# copy "StylerX\build\Release\styler-x.pdb" "%ProgramFiles%\obs-studio\obs-plugins\64bit\"
 ```
 
-### cli way
+> **note:** if you don't have admin rights, copy to `%APPDATA%\obs-studio\plugins\64bit\` instead.
+
+### cli way (recommended)
 
 ```powershell
 python stylerx-cli\stylerx.py install --build-dir StylerX\build
 ```
+
+the cli will:
+1. try installing to `%ProgramFiles%\obs-studio\obs-plugins\64bit\` (requires admin)
+2. fall back to `%APPDATA%\obs-studio\plugins\64bit\` if admin not available
+3. create the themes directory at `%APPDATA%\StylerX\themes\`
 
 then just launch obs and go to **Tools → StylerX Studio**.
 
