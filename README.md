@@ -57,7 +57,7 @@ also comes with a python cli (`stylerx-cli/stylerx.py`) for install, uninstall, 
 ### manual way
 
 ```powershell
-cd path\to\StylerX-Styler_for_OBS_Studio
+cd StylerX-Styler_for_OBS_Studio
 copy "StylerX\build\Release\styler-x.dll" "%ProgramFiles%\obs-studio\obs-plugins\64bit\"
 ```
 
@@ -66,7 +66,7 @@ copy "StylerX\build\Release\styler-x.dll" "%ProgramFiles%\obs-studio\obs-plugins
 ### cli way (recommended)
 
 ```powershell
-cd path\to\StylerX-Styler_for_OBS_Studio
+cd StylerX-Styler_for_OBS_Studio
 python stylerx-cli\stylerx.py install --build-dir StylerX\build
 ```
 
