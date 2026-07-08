@@ -60,6 +60,8 @@ first, get the repo — either clone it or [download the zip](https://github.com
 cd StylerX-Styler_for_OBS_Studio
 ```
 
+> **note:** if you downloaded the zip, the folder will be `StylerX-Styler_for_OBS_Studio-main` instead.
+
 ### manual way
 
 ```powershell

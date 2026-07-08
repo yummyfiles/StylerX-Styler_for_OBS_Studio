@@ -19,6 +19,29 @@ from pathlib import Path
 if sys.platform == "win32" and hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(errors='replace')
 
+# Detect ANSI color support
+def _supports_color():
+    if not sys.stdout.isatty():
+        return False
+    if os.environ.get("NO_COLOR"):
+        return False
+    if os.environ.get("TERM") == "dumb":
+        return False
+    if sys.platform == "win32":
+        try:
+            import ctypes
+            kernel32 = ctypes.windll.kernel32
+            console = kernel32.GetStdHandle(-11)
+            mode = ctypes.c_uint32()
+            if kernel32.GetConsoleMode(console, ctypes.byref(mode)):
+                kernel32.SetConsoleMode(console, mode.value | 0x4)
+                return True
+        except Exception:
+            pass
+    return True
+
+_USE_ANSI = _supports_color()
+
 VERSION = "1.0.0"
 APP_NAME = "StylerX"
 
@@ -34,31 +57,31 @@ LOGO = r"""
 
 
 def green(text):
-    return f"\033[92m{text}\033[0m"
+    return f"\033[92m{text}\033[0m" if _USE_ANSI else text
 
 
 def red(text):
-    return f"\033[91m{text}\033[0m"
+    return f"\033[91m{text}\033[0m" if _USE_ANSI else text
 
 
 def yellow(text):
-    return f"\033[93m{text}\033[0m"
+    return f"\033[93m{text}\033[0m" if _USE_ANSI else text
 
 
 def cyan(text):
-    return f"\033[96m{text}\033[0m"
+    return f"\033[96m{text}\033[0m" if _USE_ANSI else text
 
 
 def bold(text):
-    return f"\033[1m{text}\033[0m"
+    return f"\033[1m{text}\033[0m" if _USE_ANSI else text
 
 
 def dim(text):
-    return f"\033[2m{text}\033[0m"
+    return f"\033[2m{text}\033[0m" if _USE_ANSI else text
 
 
 def reset():
-    return "\033[0m"
+    return "\033[0m" if _USE_ANSI else ""
 
 
 SUCCESS = green("[+]")
