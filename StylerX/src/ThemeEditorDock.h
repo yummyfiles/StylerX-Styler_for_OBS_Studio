@@ -30,6 +30,7 @@ public:
 
     void loadSettings();
     void saveSettings();
+    void cleanup();
 
 signals:
     void visibilityChanged(bool visible);

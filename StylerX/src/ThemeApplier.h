@@ -26,6 +26,8 @@ public:
     void setDebounceEnabled(bool enabled);
     void setDebounceInterval(int ms);
 
+    void shutdown();
+
     static QString wrapStylerXStyle(const QString &qss);
 
 private:

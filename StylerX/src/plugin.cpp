@@ -1,6 +1,7 @@
 #include "plugin.h"
 #include "ThemeManager.h"
 #include "ThemeLibraryManager.h"
+#include "ThemeApplier.h"
 #include "ThemeEditorDock.h"
 #include <QMainWindow>
 #include <QAction>
@@ -60,7 +61,13 @@ void obs_module_post_load(void) {
 void obs_module_unload(void) {
     blog(LOG_INFO, "[StylerX] Unloading StylerX plugin...");
 
+    QObject::disconnect(qApp, &QCoreApplication::aboutToQuit, nullptr, nullptr);
+
+    ThemeApplier::instance().shutdown();
+    ThemeApplier::instance().clearStylerXStyles();
+
     if (s_dock) {
+        s_dock->cleanup();
         s_dock->saveSettings();
         s_dock->deleteLater();
         s_dock = nullptr;

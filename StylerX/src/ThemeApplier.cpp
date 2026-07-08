@@ -23,7 +23,16 @@ ThemeApplier::ThemeApplier()
     });
 }
 
-ThemeApplier::~ThemeApplier() {}
+ThemeApplier::~ThemeApplier() {
+    shutdown();
+}
+
+void ThemeApplier::shutdown() {
+    m_debounceTimer->stop();
+    m_hasPending = false;
+    m_stylerXStyleSheet.clear();
+    m_pendingStyle.clear();
+}
 
 QString ThemeApplier::wrapStylerXStyle(const QString &qss) {
     return "/* StylerX - Layered Theme Layer */\n"

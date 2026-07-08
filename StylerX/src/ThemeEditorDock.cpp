@@ -34,7 +34,12 @@ ThemeEditorDock::ThemeEditorDock(QWidget *parent)
 }
 
 ThemeEditorDock::~ThemeEditorDock() {
+    cleanup();
     saveSettings();
+}
+
+void ThemeEditorDock::cleanup() {
+    m_widgetInspector->setEnabled(false);
 }
 
 void ThemeEditorDock::setupUI() {
