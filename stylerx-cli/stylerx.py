@@ -15,16 +15,19 @@ import threading
 import itertools
 from pathlib import Path
 
+# Prevent Unicode crashes on Windows terminals (cp437/cp1252)
+if sys.platform == "win32" and hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(errors='replace')
+
 VERSION = "1.0.0"
 APP_NAME = "StylerX"
 
-LOGO = """
-  ██╗    ███████╗████████╗██╗   ██╗██╗     ███████╗██████╗ ██╗  ██╗    ██╗
- ██╔╝    ██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝██╔══██╗╚██╗██╔╝    ╚██╗
-██╔╝     ███████╗   ██║    ╚████╔╝ ██║     █████╗  ██████╔╝ ╚███╔╝      ╚██╗
-╚██╗     ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  ██╔══██╗ ██╔██╗      ██╔╝
- ╚██╗    ███████║   ██║      ██║   ███████╗███████╗██║  ██║██╔╝ ██╗    ██╔╝
-  ╚═╝    ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝
+LOGO = r"""
+  SSS  TTTTT  Y   Y  L     EEEEE  RRR    X   X
+ S       T    Y Y   L     E      R  R    X   X
+  SSS    T     Y    L     EEE    RRR      X X
+     S   T     Y    L     E      R R      X X
+  SSS    T     Y    LLLL  EEEEE  R  R     X X
 """
 
 # ---- Terminal Helpers ----
@@ -58,10 +61,10 @@ def reset():
     return "\033[0m"
 
 
-SUCCESS = green("[✓]")
-ERROR = red("[✗]")
-WORKING = cyan("[•]")
-INSTALLING = yellow("[→]")
+SUCCESS = green("[+]")
+ERROR = red("[x]")
+WORKING = cyan("[*]")
+INSTALLING = yellow("[>]")
 
 
 # ---- Spinner ----
@@ -163,10 +166,6 @@ def get_stylerx_paths(obs_dir):
 
 
 def cmd_version(args):
-    print(LOGO)
-    print(f"  {bold('Live Theme Engine for OBS Studio')}")
-    print(f"  {bold('StylerX CLI')} v{VERSION}")
-    print()
     print(f"  Plugin version: {VERSION}")
     print(f"  Python:          {sys.version.split()[0]}")
     print(f"  Platform:        {sys.platform}")
@@ -194,7 +193,7 @@ def cmd_doctor(args):
         print(f"          {dim('Install OBS Studio from https://obsproject.com/download')}")
         all_pass = False
 
-    # 3. Plugin DLL check — Program Files and AppData
+    # 3. Plugin DLL check - Program Files and AppData
     dll_found = False
     checked_paths = []
 
@@ -223,7 +222,7 @@ def cmd_doctor(args):
             all_pass = False
 
     else:
-        # macOS/Linux — check standard paths
+        # macOS/Linux - check standard paths
         for obs_dir in obs_dirs:
             plugin_path, _ = get_stylerx_paths(obs_dir)
             checked_paths.append(plugin_path)
@@ -362,7 +361,7 @@ def cmd_install(args):
 
     print()
     print(f"  {SUCCESS} {bold('StylerX installed successfully!')}")
-    print(f"  {WORKING} Restart OBS Studio and open Tools {bold('→')} StylerX Studio")
+    print(f"  {WORKING} Restart OBS Studio and open Tools {bold('->')} StylerX Studio")
     print()
 
 
@@ -385,7 +384,7 @@ def _install_plugin(obs_dir, args):
     build_dir = Path(args.build_dir)
     built_plugin = build_dir / "styler-x.dll"
     if not built_plugin.exists():
-        print(f"\n         {red('[✗]')} Built plugin not found at: {built_plugin}")
+        print(f"\n         {red('[x]')} Built plugin not found at: {built_plugin}")
         return
 
     # Try Program Files first, fall back to AppData
@@ -393,7 +392,7 @@ def _install_plugin(obs_dir, args):
     try:
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(str(built_plugin), str(dest))
-        print(f"\n         Copied: {built_plugin} → {dest}")
+        print(f"\n         Copied: {built_plugin} -> {dest}")
         return
     except PermissionError:
         pass
@@ -404,11 +403,11 @@ def _install_plugin(obs_dir, args):
         appdata_plugin.parent.mkdir(parents=True, exist_ok=True)
         try:
             shutil.copy2(str(built_plugin), str(appdata_plugin))
-            print(f"\n         Copied: {built_plugin} → {appdata_plugin}")
-            print(f"         {yellow('[!]')} Program Files requires admin — used AppData instead")
+            print(f"\n         Copied: {built_plugin} -> {appdata_plugin}")
+            print(f"         {yellow('[!]')} Program Files requires admin - used AppData instead")
             return
         except PermissionError:
-            print(f"\n         {red('[✗]')} Could not write to Program Files (needs admin) or AppData")
+            print(f"\n         {red('[x]')} Could not write to Program Files (needs admin) or AppData")
             print(f"         Run this terminal as Administrator and try again")
 
 
@@ -488,6 +487,25 @@ def cmd_update(args):
     print()
 
 
+def cmd_logo(args):
+    print(LOGO)
+
+
+def cmd_help(args):
+    print()
+    print(f"  {bold('StylerX CLI')} v{VERSION} - {bold('Live Theme Engine for OBS Studio')}")
+    print()
+    print(f"  {bold('Commands:')}")
+    print(f"    install {dim('[--build-dir PATH]')}    Install StylerX plugin to OBS")
+    print(f"    uninstall {dim('[--keep-themes]')}     Remove StylerX plugin from OBS")
+    print(f"    update                           Check for updates")
+    print(f"    version                          Show version info")
+    print(f"    logo                             Print the StylerX logo")
+    print(f"    doctor                           Run system diagnostics")
+    print(f"    help                             Show this help message")
+    print()
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="StylerX CLI - Live Theme Engine for OBS Studio",
@@ -498,14 +516,16 @@ Examples:
   stylerx uninstall            Remove StylerX plugin
   stylerx update               Check for updates
   stylerx version              Show version info
+  stylerx logo                 Print the StylerX logo
   stylerx doctor               Run system diagnostics
+  stylerx help                 Show this help message
         """,
     )
 
     parser.add_argument(
         "command",
         nargs="?",
-        choices=["install", "uninstall", "update", "version", "doctor"],
+        choices=["install", "uninstall", "update", "version", "logo", "doctor", "help"],
         help="Command to execute",
     )
     parser.add_argument(
@@ -520,6 +540,10 @@ Examples:
 
     args = parser.parse_args()
 
+    if args.command is None or args.command == "help":
+        cmd_help(args)
+        return 0
+
     print(LOGO)
     print(f"  {bold('Live Theme Engine for OBS Studio')}")
     print(f"  {bold('StylerX CLI')} v{VERSION}")
@@ -527,6 +551,8 @@ Examples:
 
     if args.command == "version":
         return cmd_version(args)
+    elif args.command == "logo":
+        return cmd_logo(args)
     elif args.command == "doctor":
         return cmd_doctor(args)
     elif args.command == "install":
@@ -536,7 +562,7 @@ Examples:
     elif args.command == "update":
         return cmd_update(args)
     else:
-        parser.print_help()
+        cmd_help(args)
         return 0
 
 

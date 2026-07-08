@@ -9,7 +9,9 @@ stylerx install              Install StylerX plugin
 stylerx uninstall            Remove StylerX plugin
 stylerx update               Check for updates
 stylerx version              Show version info
+stylerx logo                 Print the StylerX logo
 stylerx doctor               Run system diagnostics
+stylerx help                 Show this help message
 ```
 
 ## Requirements
