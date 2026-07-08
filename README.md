@@ -36,7 +36,17 @@ yo, this is a plugin for OBS Studio that lets you change the whole look of it in
 - **debounced updates** — no flickering while you drag sliders. configurable or instant.
 - **persistent dock** — remembers position and visibility across obs restarts.
 
-also comes with a python cli (`stylerx-cli/stylerx.py`) for install, uninstall, update, doctor, and diagnostics.
+also comes with a python cli (`stylerx-cli/stylerx.py`):
+
+```
+python stylerx-cli\stylerx.py install     Install the plugin
+python stylerx-cli\stylerx.py uninstall   Remove the plugin
+python stylerx-cli\stylerx.py update      Check for updates
+python stylerx-cli\stylerx.py doctor      Check if everything is set up right
+python stylerx-cli\stylerx.py version     Show version info
+python stylerx-cli\stylerx.py logo        Print the logo
+python stylerx-cli\stylerx.py help        Show available commands
+```
 
 ---
 
