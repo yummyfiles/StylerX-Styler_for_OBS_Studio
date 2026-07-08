@@ -1,14 +1,8 @@
-<!-- Logo -->
-<img src="assets/stylerx-logo.svg"
-     alt="StylerX"
-     width="650"
-     style="display:block;margin:40px auto 20px auto;" />
-
 <!-- Typing Demo -->
 <img src="assets/typing.svg"
      alt="StylerX CLI typing demo"
      width="600"
-     style="display:block;margin:0 auto 30px auto;" />
+     style="display:block;margin:40px auto 30px auto;" />
 
 <!-- Navigation -->
 <p align="center">
