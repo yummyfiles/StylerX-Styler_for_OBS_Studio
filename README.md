@@ -36,17 +36,19 @@ yo, this is a plugin for OBS Studio that lets you change the whole look of it in
 - **debounced updates** — no flickering while you drag sliders. configurable or instant.
 - **persistent dock** — remembers position and visibility across obs restarts.
 
-also comes with a python cli (`stylerx-cli/stylerx.py`):
+also comes with a python cli — run `stylerx help` from the repo folder:
 
 ```
-python stylerx-cli\stylerx.py install     Install the plugin
-python stylerx-cli\stylerx.py uninstall   Remove the plugin
-python stylerx-cli\stylerx.py update      Check for updates
-python stylerx-cli\stylerx.py doctor      Check if everything is set up right
-python stylerx-cli\stylerx.py version     Show version info
-python stylerx-cli\stylerx.py logo        Print the logo
-python stylerx-cli\stylerx.py help        Show available commands
+stylerx install     Install the plugin
+stylerx uninstall   Remove the plugin
+stylerx update      Check for updates
+stylerx doctor      Check if everything is set up right
+stylerx version     Show version info
+stylerx logo        Print the logo
+stylerx help        Show available commands
 ```
+
+> **note:** in powershell, use `.\stylerx help` instead of `stylerx help`.
 
 ---
 
@@ -73,8 +75,10 @@ cd C:\Users\yourname\Downloads\StylerX-Styler_for_OBS_Studio-main\StylerX-Styler
 then run the installer:
 
 ```powershell
-python stylerx-cli\stylerx.py install --build-dir StylerX\build
+stylerx install --build-dir StylerX\build
 ```
+
+> **note:** in powershell, use `.\stylerx install --build-dir StylerX\build` instead.
 
 the cli will try `%ProgramFiles%` first, fall back to `%APPDATA%` if admin isnt available, and create the themes directory automatically.
 
