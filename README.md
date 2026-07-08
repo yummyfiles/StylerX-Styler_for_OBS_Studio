@@ -1,8 +1,3 @@
-<!-- Typing Demo -->
-<img src="assets/typing.svg"
-     alt="StylerX CLI typing demo"
-     width="600"
-     style="display:block;margin:40px auto 30px auto;" />
 
 <!-- Navigation -->
 <p align="center">
