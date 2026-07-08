@@ -20,7 +20,7 @@
     .r3 { animation:show3 8s forwards; }
     .r4 { animation:show4 8s forwards; }
     .bar { height:12px; background:#3c3c3c; overflow:hidden; display:inline-block; width:200px; vertical-align:middle; }
-    .fill { height:100%; background:#ffffff; animation:barGrow 1.5s forwards; display:block; }
+    .fill { height:100%; background:#ffffff; animation:barGrow 1.5s 4.8s forwards; display:block; }
   </style>
 
   <!-- SHIFTED RIGHT -->
