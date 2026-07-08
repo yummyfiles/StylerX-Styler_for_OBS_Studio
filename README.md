@@ -212,6 +212,8 @@ the built dll will be at `StylerX/build/Release/styler-x.dll`.
 
 ## installing the plugin
 
+> **note:** all commands below should be run from the repo root directory (where this readme is).
+
 ### manual way
 
 ```powershell
