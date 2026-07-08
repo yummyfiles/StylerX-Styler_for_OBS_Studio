@@ -34,10 +34,11 @@ def _supports_color():
             console = kernel32.GetStdHandle(-11)
             mode = ctypes.c_uint32()
             if kernel32.GetConsoleMode(console, ctypes.byref(mode)):
-                kernel32.SetConsoleMode(console, mode.value | 0x4)
-                return True
+                if kernel32.SetConsoleMode(console, mode.value | 0x4):
+                    return True
         except Exception:
             pass
+        return False
     return True
 
 _USE_ANSI = _supports_color()
