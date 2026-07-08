@@ -1,3 +1,9 @@
+<!-- Banner Logo -->
+<img src="assets/stylerx-logo.svg"
+     alt="StylerX"
+     width="100%"
+     style="display:block;margin:0 auto 20px auto;" />
+
 <!-- Typing Demo -->
 <img src="assets/typing.svg"
      alt="StylerX CLI typing demo"
