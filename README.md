@@ -212,11 +212,10 @@ the built dll will be at `StylerX/build/Release/styler-x.dll`.
 
 ## installing the plugin
 
-> **note:** all commands below should be run from the repo root directory (where this readme is).
-
 ### manual way
 
 ```powershell
+cd path\to\StylerX-Styler_for_OBS_Studio
 # copy the plugin dll (pdb is optional, only needed for debugging)
 copy "StylerX\build\Release\styler-x.dll" "%ProgramFiles%\obs-studio\obs-plugins\64bit\"
 # optional debug symbols:
@@ -228,6 +227,7 @@ copy "StylerX\build\Release\styler-x.dll" "%ProgramFiles%\obs-studio\obs-plugins
 ### cli way (recommended)
 
 ```powershell
+cd path\to\StylerX-Styler_for_OBS_Studio
 python stylerx-cli\stylerx.py install --build-dir StylerX\build
 ```
 
