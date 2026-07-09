@@ -1,14 +1,20 @@
 <!-- Banner Logo -->
-<img src="assets/stylerx-logo.svg"
-     alt="StylerX — Live Theme Engine for OBS Studio"
-     width="100%"
-     style="display:block;margin:0 auto 30px auto;" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stylerx-logo.svg">
+  <img src="assets/stylerx-logo-light.svg"
+       alt="StylerX — Live Theme Engine for OBS Studio"
+       width="100%"
+       style="display:block;margin:0 auto 30px auto;" />
+</picture>
 
 <!-- Typing Demo -->
-<img src="assets/typing.svg"
-     alt="StylerX CLI typing demo"
-     width="600"
-     style="display:block;margin:40px auto 30px auto;" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/typing.svg">
+  <img src="assets/typing-light.svg"
+       alt="StylerX CLI typing demo"
+       width="600"
+       style="display:block;margin:40px auto 30px auto;" />
+</picture>
 
 <!-- Badges -->
 <p align="center">

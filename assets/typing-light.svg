@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 600 150">
+
+  <style>
+    @keyframes blink { 0%,100% { opacity:1 } 50% { opacity:0 } }
+    @keyframes type1 { from { max-width:0 } to { max-width:300px } }
+    @keyframes type2 { from { max-width:0 } to { max-width:300px } }
+    @keyframes type3 { from { max-width:0 } to { max-width:300px } }
+    @keyframes show { 0%,69% { opacity:0;max-height:0 } 70%,100% { opacity:1;max-height:30px } }
+    @keyframes show2 { 0%,39% { opacity:0;max-height:0 } 40%,100% { opacity:1;max-height:30px } }
+    @keyframes show3 { 0%,59% { opacity:0;max-height:0 } 60%,100% { opacity:1;max-height:30px } }
+    @keyframes show4 { 0%,84% { opacity:0;max-height:0 } 85%,100% { opacity:1;max-height:30px } }
+    @keyframes barGrow { 0% { width:0 } 100% { width:200px } }
+
+    .ln { overflow:hidden; white-space:nowrap; display:block; }
+    .t1 { animation:type1 1s steps(20) forwards; }
+    .t2 { animation:type2 0.8s steps(12) 1.5s forwards; }
+    .r1 { animation:show 3.5s forwards; }
+    .r2 { animation:show2 8s forwards; }
+    .r3 { animation:show3 8s forwards; }
+    .r4 { animation:show4 8s forwards; }
+    .bar { height:12px; background:#d0d0d0; overflow:hidden; display:inline-block; width:200px; vertical-align:middle; }
+    .fill { height:100%; background:#000000; animation:barGrow 1.5s 4.8s forwards; display:block; }
+  </style>
+
+  <!-- CENTERED -->
+  <foreignObject x="183" y="10" width="234" height="130">
+    <div xmlns="http://www.w3.org/1999/xhtml"
+         style="font-family:'Consolas','Courier New',monospace;
+                font-size:13px;
+                color:#000000;
+                line-height:1.7;">
+
+      <div class="ln t1" style="color:#000000;">
+        $ <span style="color:#000000;">stylerx build --release</span>
+      </div>
+
+      <div class="r1" style="color:#000000;">✓ Build complete</div>
+
+      <div class="ln t2" style="color:#000000;">
+        $ <span style="color:#000000;">stylerx install</span>
+      </div>
+
+      <div class="r2" style="color:#000000;">Installing plugin...</div>
+
+      <div class="r3" style="display:flex;align-items:center;gap:8px;">
+        <span style="color:#000000;">[</span>
+        <span class="bar"><span class="fill"></span></span>
+        <span style="color:#000000;">]</span>
+      </div>
+
+      <div class="r4" style="color:#000000;">✓ Install complete</div>
+
+    </div>
+  </foreignObject>
+</svg>
